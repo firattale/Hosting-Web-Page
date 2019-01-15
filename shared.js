@@ -4,40 +4,52 @@ const selectPlanButtons = document.querySelectorAll(".plan button");
 const noButton = document.querySelector(".modal__action--negative");
 const toggleButton = document.querySelector(".toggle-button");
 const mobileNav = document.querySelector(".mobile-nav");
+const ctaButton = document.querySelector(".main-nav__item--cta");
 
 for (let i = 0; i < selectPlanButtons.length; i++) {
-	selectPlanButtons[i].addEventListener("click", function() {
-		// modal.style.display = "block";
-		// backdrop.style.display = "block";
-		// modal.className = "open";
-		modal.classList.add("open");
-		backdrop.classList.add("open");
-	});
+  selectPlanButtons[i].addEventListener("click", function() {
+    modal.classList.add("open");
+    backdrop.style.display = "block";
+    setTimeout(() => {
+      backdrop.classList.add("open");
+    }, 10);
+  });
 }
 
 backdrop.addEventListener("click", function() {
-	// mobileNav.style.display = "none";
-	mobileNav.classList.remove("open");
-	closeModal();
+  mobileNav.classList.remove("open");
+  closeModal();
 });
 if (noButton) {
-	noButton.addEventListener("click", closeModal);
+  noButton.addEventListener("click", closeModal);
 }
 
 function closeModal() {
-	// modal.style.display = "none";
-	// backdrop.style.display = "none";
-	if (modal) {
-		modal.classList.remove("open");
-	}
-	backdrop.classList.remove("open");
+  if (modal) {
+    modal.classList.remove("open");
+  }
+  backdrop.classList.remove("open");
+  setTimeout(() => {
+    backdrop.style.display = "none";
+  }, 200);
 }
 
 toggleButton.addEventListener("click", function() {
-	// mobileNav.style.display = "block";
-	// backdrop.style.display = "block";
-	// if (mobileNav) {
-		mobileNav.classList.add("open");
-		backdrop.classList.add("open");
-	// }
+  mobileNav.classList.add("open");
+  backdrop.style.display = "block";
+  setTimeout(() => {
+    backdrop.classList.add("open");
+  }, 10);
+});
+
+ctaButton.addEventListener("animationstart", () => {
+  console.log("animation started", event);
+});
+
+ctaButton.addEventListener("animationend", () => {
+  console.log("animation ended", event);
+});
+
+ctaButton.addEventListener("animationiteration", () => {
+  console.log("animation iteartion", event);
 });
